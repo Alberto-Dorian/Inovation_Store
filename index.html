@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inovation Store | Descanso, calidad y elegancia</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --azul: #0753ad;
+      --azul-oscuro: #043b7c;
+      --dorado: #e8ad24;
+      --dorado-claro: #f4c95d;
+      --blanco: #ffffff;
+      --gris: #f5f7fa;
+      --texto: #172033;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--blanco);
+      color: var(--texto);
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* BARRA SUPERIOR */
+    .topbar {
+      background: var(--azul-oscuro);
+      color: white;
+      padding: 9px 5%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+
+    /* NAVBAR */
+    nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      background: white;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: bold;
+      color: var(--azul);
+      font-size: 23px;
+      letter-spacing: 1px;
+    }
+
+    .logo-symbol {
+      width: 48px;
+      height: 48px;
+      border: 3px solid var(--dorado);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dorado);
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      display: block;
+      color: var(--dorado);
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-align: center;
+    }
+
+    .menu {
+      display: flex;
+      gap: 25px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .menu a:hover {
+      color: var(--dorado);
+    }
+
+    .acciones {
+      display: flex;
+      gap: 15px;
+      font-size: 22px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 560px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.88) 40%, rgba(255,255,255,.05) 70%),
+        url("https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+      display: flex;
+      align-items: center;
+      padding: 60px 7%;
+    }
+
+    .hero-content {
+      max-width: 520px;
+    }
+
+    .eyebrow {
+      color: var(--dorado);
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      color: var(--azul-oscuro);
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      margin-bottom: 28px;
+      color: #333;
+    }
+
+    .boton {
+      display: inline-block;
+      background: var(--dorado);
+      color: white;
+      padding: 15px 28px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .boton:hover {
+      background: var(--azul);
+      transform: translateY(-2px);
+    }
+
+    /* BENEFICIOS */
+    .beneficios {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 28px 6%;
+      gap: 20px;
+      background: white;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+
+    .beneficio {
+      text-align: center;
+    }
+
+    .beneficio-icono {
+      color: var(--dorado);
+      font-size: 30px;
+      margin-bottom: 5px;
+    }
+
+    .beneficio strong {
+      display: block;
+      color: var(--azul-oscuro);
+    }
+
+    /* TITULOS */
+    .titulo {
+      text-align: center;
+      padding: 65px 20px 30px;
+    }
+
+    .titulo small {
+      color: var(--dorado);
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .titulo h2 {
+      color: var(--azul-oscuro);
+      font-size: 38px;
+      margin-top: 7px;
+    }
+
+    .titulo p {
+      color: #666;
+    }
+
+    /* CATEGORIAS */
+    .categorias {
+      padding: 0 6% 70px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 15px;
+    }
+
+    .categoria {
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 4px 18px rgba(0,0,0,.08);
+      transition: .3s;
+    }
+
+    .categoria:hover {
+      transform: translateY(-5px);
+    }
+
+    .categoria img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .categoria h3 {
+      text-align: center;
+      color: var(--azul-oscuro);
+      font-size: 14px;
+      padding: 14px 5px;
+    }
+
+    /* SIMULADOR */
+    .simulador {
+      background: var(--azul-oscuro);
+      color: white;
+      padding: 70px 6%;
+    }
+
+    .simulador-header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .simulador-header small {
+      color: var(--dorado-claro);
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .simulador-header h2 {
+      font-size: 42px;
+      margin: 8px 0;
+    }
+
+    .simulador-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 220px 1fr 260px;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .opciones {
+      background: rgba(255,255,255,.08);
+      border-radius: 15px;
+      padding: 15px;
+    }
+
+    .opcion {
+      border: 1px solid rgba(255,255,255,.15);
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .opcion:hover {
+      border-color: var(--dorado);
+    }
+
+    .opcion strong {
+      display: block;
+      color: var(--dorado-claro);
+    }
+
+    .cama {
+      height: 380px;
+      border-radius: 18px;
+      background:
+        linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1000&q=85")
+        center/cover;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,.3);
+    }
+
+    .cama-label {
+      background: rgba(0,0,0,.7);
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      color: white;
+    }
+
+    .resumen {
+      background: white;
+      color: var(--texto);
+      border-radius: 15px;
+      padding: 25px;
+    }
+
+    .resumen h3 {
+      color: var(--azul-oscuro);
+      margin-bottom: 20px;
+    }
+
+    .resumen-linea {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+
+    .precio {
+      font-size: 25px;
+      font-weight: bold;
+      color: var(--azul);
+      margin: 20px 0;
+    }
+
+    /* OFERTAS */
+    .ofertas {
+      padding: 10px 6% 70px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .oferta {
+      border-radius: 15px;
+      padding: 30px;
+      background: var(--gris);
+      text-align: center;
+      border: 1px solid #eee;
+    }
+
+    .oferta h3 {
+      color: var(--azul-oscuro);
+      margin-bottom: 10px;
+    }
+
+    .descuento {
+      color: var(--dorado);
+      font-size: 32px;
+      font-weight: bold;
+      margin: 10px;
+    }
+
+    /* VIDEOS */
+    .videos {
+      background: var(--gris);
+      padding: 20px 6% 70px;
+    }
+
+    .videos-grid {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .video {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    }
+
+    .video iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+    }
+
+    .video h3 {
+      padding: 15px 20px;
+      color: var(--azul-oscuro);
+    }
+
+    /* INOVATION PASS */
+    .pass {
+      margin: 70px 6%;
+      padding: 60px;
+      border-radius: 20px;
+      background: linear-gradient(120deg, var(--azul-oscuro), var(--azul));
+      color: white;
+      text-align: center;
+    }
+
+    .pass h2 {
+      color: var(--dorado-claro);
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    /* NEWSLETTER */
+    .newsletter {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .newsletter h2 {
+      color: var(--azul-oscuro);
+      margin-bottom: 10px;
+    }
+
+    .newsletter input {
+      padding: 15px;
+      width: min(400px, 80%);
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin: 20px 5px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--azul-oscuro);
+      color: white;
+      padding: 55px 6% 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 35px;
+    }
+
+    footer h3 {
+      color: var(--dorado-claro);
+      margin-bottom: 15px;
+    }
+
+    footer a {
+      display: block;
+      margin: 7px 0;
+      opacity: .9;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.2);
+      font-size: 13px;
+      opacity: .8;
+    }
+
+    /* MÓVIL */
+    @media (max-width: 900px) {
+      .menu {
+        display: none;
+      }
+
+      .beneficios {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .categorias {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .simulador-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ofertas {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .topbar {
+        font-size: 10px;
+      }
+
+      .hero {
+        min-height: 600px;
+        padding: 40px 25px;
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+
+      .beneficios {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .categorias {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .categoria img {
+        height: 140px;
+      }
+
+      .simulador {
+        padding: 50px 20px;
+      }
+
+      .cama {
+        height: 280px;
+      }
+
+      .pass {
+        margin: 40px 20px;
+        padding: 40px 20px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <span>🚚 Envíos a todo México</span>
+    <span>🔒 Pagos seguros</span>
+    <span>💳 Hasta 12 MSI con tarjetas participantes</span>
+  </div>
+
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-symbol">I</div>
+      <div>
+        INOVATION
+        <span>STORE</span>
+      </div>
+    </a>
+
+    <div class="menu">
+      <a href="#">INICIO</a>
+      <a href="#tienda">TIENDA</a>
+      <a href="#cama">VISTE TU CAMA</a>
+      <a href="#ofertas">OFERTAS</a>
+      <a href="#videos">VIDEOS</a>
+      <a href="#pass">INOVATION PASS</a>
+      <a href="#contacto">CONTACTO</a>
+    </div>
+
+    <div class="acciones">
+      🔍 🛒
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">DESCANSO QUE TRANSFORMA TU VIDA</div>
+      <h1>Calidad, confort y elegancia</h1>
+      <p>
+        Edredones, sábanas, almohadas y más para crear
+        el espacio de descanso que mereces.
+      </p>
+      <a href="#tienda" class="boton">COMPRAR AHORA →</a>
+    </div>
+  </section>
+
+  <section class="beneficios">
+    <div class="beneficio">
+      <div class="beneficio-icono">✦</div>
+      <strong>Materiales premium</strong>
+      Suaves e hipoalergénicos
+    </div>
+
+    <div class="beneficio">
+      <div class="beneficio-icono">✓</div>
+      <strong>Calidad garantizada</strong>
+      Hasta 10 años de durabilidad
+    </div>
+
+    <div class="beneficio">
+      <div class="beneficio-icono">🚚</div>
+      <strong>Envíos rápidos</strong>
+      A todo México
+    </div>
+
+    <div class="beneficio">
+      <div class="beneficio-icono">♢</div>
+      <strong>Atención personalizada</strong>
+      Estamos para ayudarte
+    </div>
+  </section>
+
+  <section id="tienda">
+    <div class="titulo">
+      <small>DESCUBRE NUESTRA COLECCIÓN</small>
+      <h2>Nuestras categorías</h2>
+      <p>Todo para crear el dormitorio que imaginas.</p>
+    </div>
+
+    <div class="categorias">
+
+      <div class="categoria">
+        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=600&q=80">
+        <h3>EDREDONES</h3>
+      </div>
+
+      <div class="categoria">
+        <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80">
+        <h3>SÁBANAS</h3>
+      </div>
+
+      <div class="categoria">
+        <img src="https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=600&q=80">
+        <h3>ALMOHADAS</h3>
+      </div>
+
+      <div class="categoria">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80">
+        <h3>CUBRECOLCHONES</h3>
+      </div>
+
+      <div class="categoria">
+        <img src="https://images.unsplash.com/photo-1616627561950-9f746e330187?auto=format&fit=crop&w=600&q=80">
+        <h3>PROTECTORES</h3>
+      </div>
+
+      <div class="categoria">
+        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80">
+        <h3>CORTINAS</h3>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="simulador" id="cama">
+
+    <div class="simulador-header">
+      <small>CREA TU ESPACIO IDEAL</small>
+      <h2>VISTE TU CAMA</h2>
+      <p>Personaliza cada elemento y crea tu combinación.</p>
+    </div>
+
+    <div class="simulador-grid">
+
+      <div class="opciones">
+
+        <div class="opcion">
+          <strong>01 · SÁBANAS</strong>
+          Elige el color
+        </div>
+
+        <div class="opcion">
+          <strong>02 · EDREDÓN</strong>
+          Elige tu modelo
+        </div>
+
+        <div class="opcion">
+          <strong>03 · ALMOHADAS</strong>
+          Elige tu almohada
+        </div>
+
+        <div class="opcion">
+          <strong>04 · COJINES</strong>
+          Elige tus cojines
+        </div>
+
+        <div class="opcion">
+          <strong>05 · ACCESORIOS</strong>
+          Completa tu cama
+        </div>
+
+      </div>
+
+      <div class="cama">
+        <div class="cama-label">
+          Vista previa de tu cama
+        </div>
+      </div>
+
+      <div class="resumen">
+        <h3>✨ TU CAMA IDEAL</h3>
+
+        <div class="resumen-linea">
+          <span>Sábanas</span>
+          <strong>Blanco</strong>
+        </div>
+
+        <div class="resumen-linea">
+          <span>Edredón</span>
+          <strong>Premium</strong>
+        </div>
+
+        <div class="resumen-linea">
+          <span>Almohadas</span>
+          <strong>Bamboo</strong>
+        </div>
+
+        <div class="precio">$4,960</div>
+
+        <a href="#" class="boton">
+          🛒 AÑADIR AL CARRITO
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="ofertas">
+
+    <div class="titulo">
+      <small>OPORTUNIDADES ESPECIALES</small>
+      <h2>Ofertas</h2>
+      <p>Calidad premium a precios especiales.</p>
+    </div>
+
+    <div class="ofertas">
+
+      <div class="oferta">
+        <h3>PACK FAMILIAR</h3>
+        <p>Edredón + almohadas</p>
+        <div class="descuento">15% OFF</div>
+        <a href="#" class="boton">COMPRAR</a>
+      </div>
+
+      <div class="oferta">
+        <h3>SÁBANAS PREMIUM</h3>
+        <p>Estilo egipcio</p>
+        <div class="descuento">20% OFF</div>
+        <a href="#" class="boton">COMPRAR</a>
+      </div>
+
+      <div class="oferta">
+        <h3>ALMOHADA BAMBOO</h3>
+        <p>Máximo confort</p>
+        <div class="descuento">15% OFF</div>
+        <a href="#" class="boton">COMPRAR</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="videos" id="videos">
+
+    <div class="titulo">
+      <small>CONOCE NUESTROS PRODUCTOS</small>
+      <h2>Videos</h2>
+      <p>Descubre la calidad de Inovation Store.</p>
+    </div>
+
+    <div class="videos-grid">
+
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed?listType=playlist&list=OLAK5uy_nxMGel4h69LPxN9FNglJkDjDzczWAstFg"
+          allowfullscreen>
+        </iframe>
+        <h3>La calidad que se siente</h3>
+      </div>
+
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed?listType=playlist&list=OLAK5uy_nxMGel4h69LPxN9FNglJkDjDzczWAstFg"
+          allowfullscreen>
+        </iframe>
+        <h3>Sábanas estilo egipcio</h3>
+      </div>
+
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed?listType=playlist&list=OLAK5uy_nxMGel4h69LPxN9FNglJkDjDzczWAstFg"
+          allowfullscreen>
+        </iframe>
+        <h3>Almohadas Bamboo</h3>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="pass" id="pass">
+    <h2>INOVATION PASS</h2>
+    <p>
+      Forma parte de nuestra comunidad y recibe beneficios,
+      promociones y ofertas especiales.
+    </p>
+    <br>
+    <a href="#" class="boton">CONOCER INOVATION PASS</a>
+  </section>
+
+  <section class="newsletter">
+    <h2>Recibe nuestras promociones</h2>
+    <p>Suscríbete y sé de los primeros en conocer nuestras novedades.</p>
+
+    <input type="email" placeholder="Tu correo electrónico">
+    <a href="#" class="boton">SUSCRIBIRME</a>
+  </section>
+
+  <footer id="contacto">
+
+    <div class="footer-grid">
+
+      <div>
+        <h3>INOVATION STORE</h3>
+        <p>
+          Calidad, confort y elegancia para transformar
+          tu espacio de descanso.
+        </p>
+      </div>
+
+      <div>
+        <h3>TIENDA</h3>
+        <a href="#">Edredones</a>
+        <a href="#">Sábanas</a>
+        <a href="#">Almohadas</a>
+        <a href="#">Protectores</a>
+        <a href="#">Cortinas</a>
+      </div>
+
+      <div>
+        <h3>AYUDA</h3>
+        <a href="#">Envíos</a>
+        <a href="#">Cambios y devoluciones</a>
+        <a href="#">Rastrea tu pedido</a>
+        <a href="#">Preguntas frecuentes</a>
+      </div>
+
+      <div>
+        <h3>CONTACTO</h3>
+        <p>WhatsApp</p>
+        <p>contacto@inovationstore.com</p>
+        <p>Ciudad de México</p>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Inovation Store. Todos los derechos reservados.
+    </div>
+
+  </footer>
+
+</body>
+</html>
