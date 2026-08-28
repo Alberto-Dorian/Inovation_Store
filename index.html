@@ -564,21 +564,24 @@ font-weight: 700;
   @media (max-width: 768px) {
 
   nav {
-    height: auto;
-    min-height: 78px;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 12px 16px;
-    overflow: hidden;
-    transition: transform 0.35s ease, opacity 0.35s ease;
-  }
+  height: 78px;
+  min-height: 78px;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  background: white;
+  overflow: hidden;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
 
-  nav.menu-oculto {
-    transform: translateY(-110%);
-    opacity: 0;
-    pointer-events: none;
-  }
+nav.menu-oculto {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
 
   .logo {
     width: 100%;
@@ -592,7 +595,7 @@ font-weight: 700;
 
   .menu {
     width: 100%;
-    display: flex;
+    display: none !important;
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
