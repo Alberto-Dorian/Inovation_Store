@@ -560,10 +560,22 @@ font-weight: 700;
       }
     }
   @media (max-width: 768px) {
+
   nav {
+    height: auto;
+    min-height: 78px;
+    width: 100%;
     flex-wrap: wrap;
     justify-content: center;
     padding: 12px 16px;
+    overflow: hidden;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+  }
+
+  nav.menu-oculto {
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
   }
 
   .logo {
