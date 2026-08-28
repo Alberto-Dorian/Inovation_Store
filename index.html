@@ -913,6 +913,40 @@
     </div>
 
   </footer>
+  <script>
+function actualizarVista() {
+  const enInicio = !window.location.hash || window.location.hash === "#";
+
+  const nav = document.querySelector("nav");
+  const topbar = document.querySelector(".topbar");
+
+  if (nav) {
+    nav.style.display = enInicio ? "flex" : "none";
+  }
+
+  if (topbar) {
+    topbar.style.display = enInicio ? "flex" : "none";
+  }
+
+  let botonInicio = document.getElementById("volver-inicio");
+
+  if (!enInicio) {
+    if (!botonInicio) {
+      botonInicio = document.createElement("a");
+      botonInicio.id = "volver-inicio";
+      botonInicio.href = "#";
+      botonInicio.textContent = "← INICIO";
+      document.body.prepend(botonInicio);
+    }
+    botonInicio.style.display = "block";
+  } else if (botonInicio) {
+    botonInicio.style.display = "none";
+  }
+}
+
+window.addEventListener("hashchange", actualizarVista);
+window.addEventListener("load", actualizarVista);
+</script>
 
 </body>
 </html>
