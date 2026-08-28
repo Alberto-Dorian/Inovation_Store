@@ -979,6 +979,29 @@ window.addEventListener("load", function() {
 
   actualizarVista();
 });
+// MENÚ: ocultar al bajar y mostrar al subir
+let ultimaPosicionMenu = window.scrollY;
+
+window.addEventListener("scroll", function () {
+
+  const menuPrincipal = document.querySelector("nav");
+
+  if (!menuPrincipal) return;
+
+  const posicionActualMenu = window.scrollY;
+
+  if (posicionActualMenu <= 20) {
+    menuPrincipal.classList.remove("menu-oculto");
+  } 
+  else if (posicionActualMenu > ultimaPosicionMenu) {
+    menuPrincipal.classList.add("menu-oculto");
+  } 
+  else {
+    menuPrincipal.classList.remove("menu-oculto");
+  }
+
+  ultimaPosicionMenu = posicionActualMenu;
+});
 </script>
   
 
