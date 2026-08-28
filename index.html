@@ -928,65 +928,8 @@ font-weight: 700;
 
   </footer>
 <script>
-function actualizarVista() {
-  const enInicio =
-    !window.location.hash || window.location.hash === "#";
+/* MENÚ: ocultar al bajar y mostrar al subir */
 
-  const nav = document.querySelector("nav");
-  const topbar = document.querySelector(".topbar");
-
-  if (nav) {
-    nav.style.display = enInicio ? "flex" : "none";
-  }
-
-  if (topbar) {
-    topbar.style.display = enInicio ? "flex" : "none";
-  }
-
-  let botonInicio = document.getElementById("volver-inicio");
-
-  if (!enInicio) {
-
-    if (!botonInicio) {
-      botonInicio = document.createElement("a");
-
-      botonInicio.id = "volver-inicio";
-      botonInicio.href = "#";
-      botonInicio.textContent = "← INICIO";
-
-      document.body.prepend(botonInicio);
-    }
-
-    botonInicio.style.display = "block";
-
-  } else {
-
-    if (botonInicio) {
-      botonInicio.style.display = "none";
-    }
-  }
-}
-
-/* Cambiar entre secciones */
-window.addEventListener("hashchange", actualizarVista);
-
-/* Al abrir la página */
-window.addEventListener("load", function() {
-
-  /* Siempre comenzar en INICIO */
-  if (window.location.hash) {
-    history.replaceState(
-      null,
-      "",
-      window.location.pathname + window.location.search
-    );
-  }
-
-  window.scrollTo(0, 0);
-
-  actualizarVista();
-});
-// MENÚ: ocultar al bajar y mostrar al subir
 let ultimaPosicionMenu = window.scrollY;
 
 window.addEventListener("scroll", function () {
@@ -998,19 +941,25 @@ window.addEventListener("scroll", function () {
   const posicionActualMenu = window.scrollY;
 
   if (posicionActualMenu <= 20) {
+
     menuPrincipal.classList.remove("menu-oculto");
-  } 
-  else if (posicionActualMenu > ultimaPosicionMenu) {
+
+  } else if (posicionActualMenu > ultimaPosicionMenu) {
+
+    // Bajando
     menuPrincipal.classList.add("menu-oculto");
-  } 
-  else {
+
+  } else {
+
+    // Subiendo
     menuPrincipal.classList.remove("menu-oculto");
+
   }
 
   ultimaPosicionMenu = posicionActualMenu;
 });
 </script>
-  
 
 </body>
 </html>
+
