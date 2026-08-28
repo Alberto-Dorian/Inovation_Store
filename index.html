@@ -921,7 +921,6 @@ function actualizarVista() {
   const nav = document.querySelector("nav");
   const topbar = document.querySelector(".topbar");
 
-  /* Ocultar o mostrar navegación */
   if (nav) {
     nav.style.display = enInicio ? "flex" : "none";
   }
@@ -930,7 +929,6 @@ function actualizarVista() {
     topbar.style.display = enInicio ? "flex" : "none";
   }
 
-  /* Botón regresar a inicio */
   let botonInicio = document.getElementById("volver-inicio");
 
   if (!enInicio) {
@@ -955,11 +953,25 @@ function actualizarVista() {
   }
 }
 
-/* Cuando cambia de sección */
+/* Cambiar entre secciones */
 window.addEventListener("hashchange", actualizarVista);
 
-/* Cuando carga la página */
-window.addEventListener("load", actualizarVista);
+/* Al abrir la página */
+window.addEventListener("load", function() {
+
+  /* Siempre comenzar en INICIO */
+  if (window.location.hash) {
+    history.replaceState(
+      null,
+      "",
+      window.location.pathname + window.location.search
+    );
+  }
+
+  window.scrollTo(0, 0);
+
+  actualizarVista();
+});
 </script>
   
 
