@@ -913,13 +913,15 @@
     </div>
 
   </footer>
-  <script>
+<script>
 function actualizarVista() {
-  const enInicio = !window.location.hash || window.location.hash === "#";
+  const enInicio =
+    !window.location.hash || window.location.hash === "#";
 
   const nav = document.querySelector("nav");
   const topbar = document.querySelector(".topbar");
 
+  /* Ocultar o mostrar navegación */
   if (nav) {
     nav.style.display = enInicio ? "flex" : "none";
   }
@@ -928,25 +930,38 @@ function actualizarVista() {
     topbar.style.display = enInicio ? "flex" : "none";
   }
 
+  /* Botón regresar a inicio */
   let botonInicio = document.getElementById("volver-inicio");
 
   if (!enInicio) {
+
     if (!botonInicio) {
       botonInicio = document.createElement("a");
+
       botonInicio.id = "volver-inicio";
       botonInicio.href = "#";
       botonInicio.textContent = "← INICIO";
+
       document.body.prepend(botonInicio);
     }
+
     botonInicio.style.display = "block";
-  } else if (botonInicio) {
-    botonInicio.style.display = "none";
+
+  } else {
+
+    if (botonInicio) {
+      botonInicio.style.display = "none";
+    }
   }
 }
 
+/* Cuando cambia de sección */
 window.addEventListener("hashchange", actualizarVista);
+
+/* Cuando carga la página */
 window.addEventListener("load", actualizarVista);
 </script>
+  
 
 </body>
 </html>
