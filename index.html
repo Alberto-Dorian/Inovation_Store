@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
- 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
   <title>Inovation Store | Descanso, calidad y elegancia</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -26,12 +29,17 @@
       --texto: #172033;
     }
 
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 20px;
+    }
+
     body {
-    
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+      font-family: 'Montserrat', Arial, Helvetica, sans-serif;
       background: var(--blanco);
       color: var(--texto);
       line-height: 1.5;
+      overflow-x: hidden;
     }
 
     a {
@@ -39,19 +47,28 @@
       color: inherit;
     }
 
-    /* BARRA SUPERIOR */
+    /* =========================
+       BARRA SUPERIOR
+    ========================= */
+
     .topbar {
       background: var(--azul-oscuro);
       color: white;
       padding: 9px 5%;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      gap: 15px;
       font-size: 13px;
     }
 
-    /* NAVBAR */
+    /* =========================
+       NAVBAR
+    ========================= */
+
     nav {
       height: 78px;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -61,58 +78,34 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
-   nav {
-  transition: transform 0.35s ease, opacity 0.35s ease;
-}
-
-nav.menu-oculto {
-  transform: translateY(-110%);
-  opacity: 0;
-  pointer-events: none;
-}
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-weight: bold;
-      color: var(--azul);
-      font-size: 23px;
-      letter-spacing: 1px;
-    }
-    .logo img {
-  width: 95px;
-  height: auto;
-  display: block;
-}
-
-    .logo-symbol {
-      width: 48px;
-      height: 48px;
-      border: 3px solid var(--dorado);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      color: var(--dorado);
-      font-size: 25px;
-      font-weight: bold;
+      flex-shrink: 0;
     }
 
-    .logo span {
+    .logo img {
+      width: 95px;
+      height: auto;
       display: block;
-      color: var(--dorado);
-      font-size: 11px;
-      letter-spacing: 4px;
-      text-align: center;
     }
 
     .menu {
       display: flex;
+      align-items: center;
+      justify-content: center;
       gap: 25px;
       font-size: 14px;
       font-weight: bold;
+    }
+
+    .menu a {
+      white-space: nowrap;
+      transition: color 0.2s ease;
     }
 
     .menu a:hover {
@@ -121,19 +114,62 @@ nav.menu-oculto {
 
     .acciones {
       display: flex;
+      align-items: center;
       gap: 15px;
       font-size: 22px;
+      flex-shrink: 0;
     }
 
-    /* HERO */
+    /* =========================
+       BOTÓN VOLVER A INICIO
+    ========================= */
+
+    #volver-inicio {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      z-index: 3000;
+
+      display: none;
+
+      background: var(--azul-oscuro);
+      color: white;
+
+      padding: 11px 20px;
+      border-radius: 30px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      box-shadow: 0 5px 18px rgba(0,0,0,.25);
+
+      transition: .3s ease;
+    }
+
+    #volver-inicio:hover {
+      background: var(--dorado);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
     .hero {
       min-height: 560px;
+
       background:
-        linear-gradient(90deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.88) 40%, rgba(255,255,255,.05) 70%),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.97) 0%,
+          rgba(255,255,255,.88) 40%,
+          rgba(255,255,255,.05) 70%
+        ),
         url("https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1800&q=85")
         center/cover;
+
       display: flex;
       align-items: center;
+
       padding: 60px 7%;
     }
 
@@ -151,7 +187,7 @@ nav.menu-oculto {
 
     .hero h1 {
       font-family: 'Playfair Display', Georgia, serif;
-font-weight: 700;
+      font-weight: 700;
       color: var(--azul-oscuro);
       font-size: clamp(42px, 6vw, 72px);
       line-height: 1.05;
@@ -179,7 +215,10 @@ font-weight: 700;
       transform: translateY(-2px);
     }
 
-    /* BENEFICIOS */
+    /* =========================
+       BENEFICIOS
+    ========================= */
+
     .beneficios {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -204,7 +243,10 @@ font-weight: 700;
       color: var(--azul-oscuro);
     }
 
-    /* TITULOS */
+    /* =========================
+       TITULOS
+    ========================= */
+
     .titulo {
       text-align: center;
       padding: 65px 20px 30px;
@@ -226,9 +268,13 @@ font-weight: 700;
       color: #666;
     }
 
-    /* CATEGORIAS */
+    /* =========================
+       CATEGORIAS
+    ========================= */
+
     .categorias {
       padding: 0 6% 70px;
+
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 15px;
@@ -250,6 +296,7 @@ font-weight: 700;
       width: 100%;
       height: 180px;
       object-fit: cover;
+      display: block;
     }
 
     .categoria h3 {
@@ -259,7 +306,10 @@ font-weight: 700;
       padding: 14px 5px;
     }
 
-    /* SIMULADOR */
+    /* =========================
+       SIMULADOR
+    ========================= */
+
     .simulador {
       background: var(--azul-oscuro);
       color: white;
@@ -285,8 +335,10 @@ font-weight: 700;
     .simulador-grid {
       max-width: 1200px;
       margin: auto;
+
       display: grid;
       grid-template-columns: 220px 1fr 260px;
+
       gap: 25px;
       align-items: center;
     }
@@ -317,14 +369,18 @@ font-weight: 700;
     .cama {
       height: 380px;
       border-radius: 18px;
+
       background:
         linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,.25)),
         url("https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1000&q=85")
         center/cover;
+
       display: flex;
       align-items: end;
       justify-content: center;
+
       overflow: hidden;
+
       box-shadow: 0 15px 35px rgba(0,0,0,.3);
     }
 
@@ -363,9 +419,13 @@ font-weight: 700;
       margin: 20px 0;
     }
 
-    /* OFERTAS */
+    /* =========================
+       OFERTAS
+    ========================= */
+
     .ofertas {
       padding: 10px 6% 70px;
+
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 25px;
@@ -391,7 +451,10 @@ font-weight: 700;
       margin: 10px;
     }
 
-    /* VIDEOS */
+    /* =========================
+       VIDEOS
+    ========================= */
+
     .videos {
       background: var(--gris);
       padding: 20px 6% 70px;
@@ -400,6 +463,7 @@ font-weight: 700;
     .videos-grid {
       max-width: 1000px;
       margin: auto;
+
       display: grid;
       grid-template-columns: 1fr;
       gap: 20px;
@@ -416,6 +480,7 @@ font-weight: 700;
       width: 100%;
       height: 350px;
       border: 0;
+      display: block;
     }
 
     .video h3 {
@@ -423,12 +488,23 @@ font-weight: 700;
       color: var(--azul-oscuro);
     }
 
-    /* INOVATION PASS */
+    /* =========================
+       INOVATION PASS
+    ========================= */
+
     .pass {
       margin: 70px 6%;
       padding: 60px;
+
       border-radius: 20px;
-      background: linear-gradient(120deg, var(--azul-oscuro), var(--azul));
+
+      background:
+        linear-gradient(
+          120deg,
+          var(--azul-oscuro),
+          var(--azul)
+        );
+
       color: white;
       text-align: center;
     }
@@ -439,7 +515,10 @@ font-weight: 700;
       margin-bottom: 12px;
     }
 
-    /* NEWSLETTER */
+    /* =========================
+       NEWSLETTER
+    ========================= */
+
     .newsletter {
       text-align: center;
       padding: 60px 20px;
@@ -452,13 +531,19 @@ font-weight: 700;
 
     .newsletter input {
       padding: 15px;
+
       width: min(400px, 80%);
+
       border: 1px solid #ddd;
       border-radius: 5px;
+
       margin: 20px 5px;
     }
 
-    /* FOOTER */
+    /* =========================
+       FOOTER
+    ========================= */
+
     footer {
       background: var(--azul-oscuro);
       color: white;
@@ -486,496 +571,1302 @@ font-weight: 700;
       text-align: center;
       margin-top: 40px;
       padding-top: 20px;
+
       border-top: 1px solid rgba(255,255,255,.2);
+
       font-size: 13px;
       opacity: .8;
     }
 
-    /* MÓVIL */
-    @media (max-width: 900px) {
-      .menu {
-        display: none;
-      }
+    /* =========================
+       TABLET
+    ========================= */
 
-      .beneficios {
-        grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 1100px) {
+
+      .menu {
+        gap: 15px;
+        font-size: 12px;
       }
 
       .categorias {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
 
       .simulador-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 200px 1fr;
       }
 
-      .ofertas {
-        grid-template-columns: 1fr;
+      .resumen {
+        grid-column: 1 / -1;
       }
 
       .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 2fr 1fr 1fr;
       }
     }
 
-    @media (max-width: 600px) {
+    /* =========================
+       MÓVIL
+    ========================= */
+
+    @media (max-width: 768px) {
+
+      /* BARRA SUPERIOR */
+
       .topbar {
+        padding: 8px 10px;
+        gap: 8px;
+        justify-content: center;
+        font-size: 9px;
+        text-align: center;
+      }
+
+      .topbar span {
+        white-space: nowrap;
+      }
+
+      /* NAV */
+
+      nav {
+        height: 82px;
+        min-height: 82px;
+
+        padding: 0 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 8px;
+      }
+
+      /* LOGO */
+
+      .logo {
+        width: auto;
+        flex-shrink: 0;
+      }
+
+      .logo img {
+        width: 68px;
+      }
+
+      /* MENÚ */
+
+      .menu {
+        flex: 1;
+
+        display: flex;
+
+        justify-content: flex-start;
+        align-items: center;
+
+        gap: 14px;
+
+        min-width: 0;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        white-space: nowrap;
+
+        scrollbar-width: none;
+
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .menu::-webkit-scrollbar {
+        display: none;
+      }
+
+      .menu a {
+        flex-shrink: 0;
         font-size: 10px;
       }
 
+      /* ICONOS */
+
+      .acciones {
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+
+        gap: 7px;
+
+        font-size: 18px;
+      }
+
+      /* BOTÓN INICIO */
+
+      #volver-inicio {
+        top: 12px;
+        left: 12px;
+
+        padding: 9px 15px;
+
+        font-size: 12px;
+      }
+
+      /* HERO */
+
       .hero {
-        min-height: 600px;
-        padding: 40px 25px;
+        min-height: 650px;
+        padding: 50px 20px;
+
+        text-align: center;
+
+        background:
+          linear-gradient(
+            rgba(255,255,255,.78),
+            rgba(255,255,255,.55)
+          ),
+          url("https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=85")
+          center/cover;
+      }
+
+      .hero-content {
+        max-width: 100%;
       }
 
       .hero h1 {
-        font-size: 45px;
+        font-size: 42px;
+        line-height: 1.05;
       }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .hero .boton {
+        width: 100%;
+        max-width: 330px;
+      }
+
+      /* BENEFICIOS */
 
       .beneficios {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 25px 15px;
+        gap: 20px 10px;
       }
 
+      .beneficio {
+        font-size: 12px;
+      }
+
+      .beneficio-icono {
+        font-size: 25px;
+      }
+
+      /* TITULOS */
+
+      .titulo {
+        padding: 50px 15px 25px;
+      }
+
+      .titulo h2 {
+        font-size: 32px;
+      }
+
+      /* CATEGORIAS */
+
       .categorias {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+
+        padding: 0 12px 55px;
       }
 
       .categoria img {
         height: 140px;
       }
 
+      .categoria h3 {
+        font-size: 12px;
+        padding: 13px 5px;
+      }
+
+      /* SIMULADOR */
+
       .simulador {
-        padding: 50px 20px;
+        padding: 50px 15px;
+      }
+
+      .simulador-header h2 {
+        font-size: 34px;
+      }
+
+      .simulador-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
       }
 
       .cama {
         height: 280px;
+        order: 1;
       }
 
+      .opciones {
+        order: 2;
+      }
+
+      .resumen {
+        order: 3;
+      }
+
+      /* OFERTAS */
+
+      .ofertas {
+        grid-template-columns: 1fr;
+        padding: 10px 15px 55px;
+        gap: 18px;
+      }
+
+      /* VIDEOS */
+
+      .videos {
+        padding: 20px 15px 55px;
+      }
+
+      .video iframe {
+        height: 230px;
+      }
+
+      /* PASS */
+
       .pass {
-        margin: 40px 20px;
+        margin: 40px 15px;
         padding: 40px 20px;
       }
 
+      .pass h2 {
+        font-size: 32px;
+      }
+
+      /* NEWSLETTER */
+
+      .newsletter {
+        padding: 50px 15px;
+      }
+
+      .newsletter input {
+        width: 90%;
+        margin: 20px 0 10px;
+      }
+
+      .newsletter .boton {
+        margin-top: 5px;
+      }
+
+      /* FOOTER */
+
       .footer-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
       }
+
     }
-  @media (max-width: 768px) {
 
-  nav {
-  height: 78px;
-  min-height: 78px;
-  width: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 16px;
-  background: white;
-  overflow: hidden;
-  transition: transform 0.35s ease, opacity 0.35s ease;
-}
+    /* =========================
+       MÓVILES PEQUEÑOS
+    ========================= */
 
-nav.menu-oculto {
-  transform: translateY(-100%);
-  opacity: 0;
-  pointer-events: none;
-}
+    @media (max-width: 480px) {
 
-  .logo {
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
+      .topbar {
+        font-size: 8px;
+      }
 
-  .logo img {
-    width: 95px;
-  }
+      nav {
+        height: 78px;
+        min-height: 78px;
+      }
 
-  .menu {
-    width: 100%;
-    display: none !important;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-  }
+      .logo img {
+        width: 62px;
+      }
 
-  .menu a {
-    font-size: 13px;
-  }
+      .menu {
+        gap: 12px;
+      }
 
-  .acciones {
-    width: 100%;
-    justify-content: center;
-    margin-top: 10px;
-  }
+      .menu a {
+        font-size: 9px;
+      }
 
-  .hero {
-    min-height: 650px;
-    padding: 50px 20px;
-    text-align: center;
-  }
+      .acciones {
+        font-size: 16px;
+      }
 
-  .hero h1 {
-    font-size: 42px;
-    line-height: 1.05;
-  }
+      .hero {
+        min-height: 620px;
+      }
 
-  .hero p {
-    font-size: 18px;
-  }
+      .hero h1 {
+        font-size: 38px;
+      }
 
-  .hero .btn {
-    width: 100%;
-    max-width: 330px;
-  }
-}
+      .hero p {
+        font-size: 17px;
+      }
+
+      .categorias {
+        gap: 10px;
+      }
+
+      .categoria img {
+        height: 125px;
+      }
+
+      .titulo h2 {
+        font-size: 29px;
+      }
+
+    }
+
   </style>
 </head>
 
 <body>
 
+  <!-- =========================
+       BARRA SUPERIOR
+  ========================== -->
+
   <div class="topbar">
+
     <span>🚚 Envíos a todo México</span>
+
     <span>🔒 Pagos seguros</span>
+
     <span>💳 Hasta 12 MSI con tarjetas participantes</span>
+
   </div>
 
+
+  <!-- =========================
+       MENÚ PRINCIPAL
+  ========================== -->
+
   <nav>
-    <a href="#" class="logo">
-  <img src="Inovation_logo.PNG" alt="Inovation Store">
-</a>
+
+    <a href="#" class="logo" id="logo-inicio">
+
+      <img
+        src="Inovation_logo.PNG"
+        alt="Inovation Store"
+      >
+
+    </a>
+
 
     <div class="menu">
-      <a href="#">INICIO</a>
-      <a href="#tienda">TIENDA</a>
-      <a href="#cama">VISTE TU CAMA</a>
-      <a href="#ofertas">OFERTAS</a>
-      <a href="#videos">VIDEOS</a>
-      <a href="#pass">INOVATION PASS</a>
-      <a href="#contacto">CONTACTO</a>
+
+      <a href="#" data-seccion="inicio">
+        INICIO
+      </a>
+
+      <a href="#tienda">
+        TIENDA
+      </a>
+
+      <a href="#cama">
+        VISTE TU CAMA
+      </a>
+
+      <a href="#ofertas">
+        OFERTAS
+      </a>
+
+      <a href="#videos">
+        VIDEOS
+      </a>
+
+      <a href="#pass">
+        INOVATION PASS
+      </a>
+
+      <a href="#contacto">
+        CONTACTO
+      </a>
+
     </div>
+
 
     <div class="acciones">
+
       🔍 🛒
+
     </div>
+
   </nav>
 
+
+  <!-- =========================
+       BOTÓN VOLVER A INICIO
+  ========================== -->
+
+  <a href="#" id="volver-inicio">
+    ← INICIO
+  </a>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
   <section class="hero">
+
     <div class="hero-content">
-      <div class="eyebrow">DESCANSO QUE TRANSFORMA TU VIDA</div>
-      <h1>Calidad, confort y elegancia</h1>
+
+      <div class="eyebrow">
+        DESCANSO QUE TRANSFORMA TU VIDA
+      </div>
+
+      <h1>
+        Calidad, confort y elegancia
+      </h1>
+
       <p>
         Edredones, sábanas, almohadas y más para crear
         el espacio de descanso que mereces.
       </p>
-      <a href="#tienda" class="boton">COMPRAR AHORA →</a>
+
+      <a href="#tienda" class="boton">
+        COMPRAR AHORA →
+      </a>
+
     </div>
+
   </section>
+
+
+  <!-- =========================
+       BENEFICIOS
+  ========================== -->
 
   <section class="beneficios">
+
     <div class="beneficio">
-      <div class="beneficio-icono">✦</div>
-      <strong>Materiales premium</strong>
+
+      <div class="beneficio-icono">
+        ✦
+      </div>
+
+      <strong>
+        Materiales premium
+      </strong>
+
       Suaves e hipoalergénicos
+
     </div>
 
+
     <div class="beneficio">
-      <div class="beneficio-icono">✓</div>
-      <strong>Calidad garantizada</strong>
+
+      <div class="beneficio-icono">
+        ✓
+      </div>
+
+      <strong>
+        Calidad garantizada
+      </strong>
+
       Hasta 10 años de durabilidad
+
     </div>
 
+
     <div class="beneficio">
-      <div class="beneficio-icono">🚚</div>
-      <strong>Envíos rápidos</strong>
+
+      <div class="beneficio-icono">
+        🚚
+      </div>
+
+      <strong>
+        Envíos rápidos
+      </strong>
+
       A todo México
+
     </div>
 
+
     <div class="beneficio">
-      <div class="beneficio-icono">♢</div>
-      <strong>Atención personalizada</strong>
+
+      <div class="beneficio-icono">
+        ♢
+      </div>
+
+      <strong>
+        Atención personalizada
+      </strong>
+
       Estamos para ayudarte
+
     </div>
+
   </section>
 
+
+  <!-- =========================
+       TIENDA
+  ========================== -->
+
   <section id="tienda">
+
     <div class="titulo">
-      <small>DESCUBRE NUESTRA COLECCIÓN</small>
-      <h2>Nuestras categorías</h2>
-      <p>Todo para crear el dormitorio que imaginas.</p>
+
+      <small>
+        DESCUBRE NUESTRA COLECCIÓN
+      </small>
+
+      <h2>
+        Nuestras categorías
+      </h2>
+
+      <p>
+        Todo para crear el dormitorio que imaginas.
+      </p>
+
     </div>
+
 
     <div class="categorias">
 
-      <div class="categoria">
-        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=600&q=80">
-        <h3>EDREDONES</h3>
-      </div>
 
       <div class="categoria">
-        <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80">
-        <h3>SÁBANAS</h3>
+
+        <img
+          src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=600&q=80"
+          alt="Edredones"
+        >
+
+        <h3>
+          EDREDONES
+        </h3>
+
       </div>
 
-      <div class="categoria">
-        <img src="https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=600&q=80">
-        <h3>ALMOHADAS</h3>
-      </div>
 
       <div class="categoria">
-        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80">
-        <h3>CUBRECOLCHONES</h3>
+
+        <img
+          src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80"
+          alt="Sábanas"
+        >
+
+        <h3>
+          SÁBANAS
+        </h3>
+
       </div>
 
-      <div class="categoria">
-        <img src="https://images.unsplash.com/photo-1616627561950-9f746e330187?auto=format&fit=crop&w=600&q=80">
-        <h3>PROTECTORES</h3>
-      </div>
 
       <div class="categoria">
-        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80">
-        <h3>CORTINAS</h3>
+
+        <img
+          src="https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=600&q=80"
+          alt="Almohadas"
+        >
+
+        <h3>
+          ALMOHADAS
+        </h3>
+
       </div>
+
+
+      <div class="categoria">
+
+        <img
+          src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80"
+          alt="Cubrecolchones"
+        >
+
+        <h3>
+          CUBRECOLCHONES
+        </h3>
+
+      </div>
+
+
+      <div class="categoria">
+
+        <img
+          src="https://images.unsplash.com/photo-1616627561950-9f746e330187?auto=format&fit=crop&w=600&q=80"
+          alt="Protectores"
+        >
+
+        <h3>
+          PROTECTORES
+        </h3>
+
+      </div>
+
+
+      <div class="categoria">
+
+        <img
+          src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80"
+          alt="Cortinas"
+        >
+
+        <h3>
+          CORTINAS
+        </h3>
+
+      </div>
+
 
     </div>
+
   </section>
 
-  <section class="simulador" id="cama">
+
+  <!-- =========================
+       VISTE TU CAMA
+  ========================== -->
+
+  <section
+    class="simulador"
+    id="cama"
+  >
 
     <div class="simulador-header">
-      <small>CREA TU ESPACIO IDEAL</small>
-      <h2>VISTE TU CAMA</h2>
-      <p>Personaliza cada elemento y crea tu combinación.</p>
+
+      <small>
+        CREA TU ESPACIO IDEAL
+      </small>
+
+      <h2>
+        VISTE TU CAMA
+      </h2>
+
+      <p>
+        Personaliza cada elemento y crea tu combinación.
+      </p>
+
     </div>
+
 
     <div class="simulador-grid">
 
+
       <div class="opciones">
 
+
         <div class="opcion">
-          <strong>01 · SÁBANAS</strong>
+
+          <strong>
+            01 · SÁBANAS
+          </strong>
+
           Elige el color
+
         </div>
 
+
         <div class="opcion">
-          <strong>02 · EDREDÓN</strong>
+
+          <strong>
+            02 · EDREDÓN
+          </strong>
+
           Elige tu modelo
+
         </div>
 
+
         <div class="opcion">
-          <strong>03 · ALMOHADAS</strong>
+
+          <strong>
+            03 · ALMOHADAS
+          </strong>
+
           Elige tu almohada
+
         </div>
 
+
         <div class="opcion">
-          <strong>04 · COJINES</strong>
+
+          <strong>
+            04 · COJINES
+          </strong>
+
           Elige tus cojines
+
         </div>
 
+
         <div class="opcion">
-          <strong>05 · ACCESORIOS</strong>
+
+          <strong>
+            05 · ACCESORIOS
+          </strong>
+
           Completa tu cama
+
         </div>
+
 
       </div>
 
+
       <div class="cama">
+
         <div class="cama-label">
           Vista previa de tu cama
         </div>
+
       </div>
 
+
       <div class="resumen">
-        <h3>✨ TU CAMA IDEAL</h3>
+
+        <h3>
+          ✨ TU CAMA IDEAL
+        </h3>
+
 
         <div class="resumen-linea">
-          <span>Sábanas</span>
-          <strong>Blanco</strong>
+
+          <span>
+            Sábanas
+          </span>
+
+          <strong>
+            Blanco
+          </strong>
+
         </div>
+
 
         <div class="resumen-linea">
-          <span>Edredón</span>
-          <strong>Premium</strong>
+
+          <span>
+            Edredón
+          </span>
+
+          <strong>
+            Premium
+          </strong>
+
         </div>
+
 
         <div class="resumen-linea">
-          <span>Almohadas</span>
-          <strong>Bamboo</strong>
+
+          <span>
+            Almohadas
+          </span>
+
+          <strong>
+            Bamboo
+          </strong>
+
         </div>
 
-        <div class="precio">$4,960</div>
+
+        <div class="precio">
+          $4,960
+        </div>
+
 
         <a href="#" class="boton">
           🛒 AÑADIR AL CARRITO
         </a>
+
       </div>
 
+
     </div>
+
   </section>
+
+
+  <!-- =========================
+       OFERTAS
+  ========================== -->
 
   <section id="ofertas">
 
     <div class="titulo">
-      <small>OPORTUNIDADES ESPECIALES</small>
-      <h2>Ofertas</h2>
-      <p>Calidad premium a precios especiales.</p>
+
+      <small>
+        OPORTUNIDADES ESPECIALES
+      </small>
+
+      <h2>
+        Ofertas
+      </h2>
+
+      <p>
+        Calidad premium a precios especiales.
+      </p>
+
     </div>
+
 
     <div class="ofertas">
 
-      <div class="oferta">
-        <h3>PACK FAMILIAR</h3>
-        <p>Edredón + almohadas</p>
-        <div class="descuento">15% OFF</div>
-        <a href="#" class="boton">COMPRAR</a>
-      </div>
 
       <div class="oferta">
-        <h3>SÁBANAS PREMIUM</h3>
-        <p>Estilo egipcio</p>
-        <div class="descuento">20% OFF</div>
-        <a href="#" class="boton">COMPRAR</a>
+
+        <h3>
+          PACK FAMILIAR
+        </h3>
+
+        <p>
+          Edredón + almohadas
+        </p>
+
+        <div class="descuento">
+          15% OFF
+        </div>
+
+        <a href="#" class="boton">
+          COMPRAR
+        </a>
+
       </div>
 
+
       <div class="oferta">
-        <h3>ALMOHADA BAMBOO</h3>
-        <p>Máximo confort</p>
-        <div class="descuento">15% OFF</div>
-        <a href="#" class="boton">COMPRAR</a>
+
+        <h3>
+          SÁBANAS PREMIUM
+        </h3>
+
+        <p>
+          Estilo egipcio
+        </p>
+
+        <div class="descuento">
+          20% OFF
+        </div>
+
+        <a href="#" class="boton">
+          COMPRAR
+        </a>
+
       </div>
+
+
+      <div class="oferta">
+
+        <h3>
+          ALMOHADA BAMBOO
+        </h3>
+
+        <p>
+          Máximo confort
+        </p>
+
+        <div class="descuento">
+          15% OFF
+        </div>
+
+        <a href="#" class="boton">
+          COMPRAR
+        </a>
+
+      </div>
+
 
     </div>
+
   </section>
 
-  <section class="videos" id="videos">
+
+  <!-- =========================
+       VIDEOS
+  ========================== -->
+
+  <section
+    class="videos"
+    id="videos"
+  >
 
     <div class="titulo">
-      <small>CONOCE NUESTROS PRODUCTOS</small>
-      <h2>Videos</h2>
-      <p>Descubre la calidad de Inovation Store.</p>
+
+      <small>
+        CONOCE NUESTROS PRODUCTOS
+      </small>
+
+      <h2>
+        Videos
+      </h2>
+
+      <p>
+        Descubre la calidad de Inovation Store.
+      </p>
+
     </div>
+
 
     <div class="videos-grid">
 
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed?listType=playlist&list=OLAK5uy_nxMGel4h69LPxN9FNglJkDjDzczWAstFg"
-          allowfullscreen>
-        </iframe>
-        <h3>La calidad que se siente</h3>
-      </div>
 
       <div class="video">
-        <iframe src="https://www.youtube.com/embed?listType=playlist&list=OLAK5uy_nxMGel4h69LPxN9FNglJkDjDzczWAstFg"
+
+        <iframe
+          src="https://www.youtube.com/embed?listType=playlist&list=OLAK5uy_nxMGel4h69LPxN9FNglJkDjDzczWAstFg"
           allowfullscreen>
         </iframe>
-        <h3>Sábanas estilo egipcio</h3>
+
+        <h3>
+          La calidad que se siente
+        </h3>
+
       </div>
 
+
       <div class="video">
-        <iframe src="https://www.youtube.com/embed?listType=playlist&list=OLAK5uy_nxMGel4h69LPxN9FNglJkDjDzczWAstFg"
+
+        <iframe
+          src="https://www.youtube.com/embed?listType=playlist&list=OLAK5uy_nxMGel4h69LPxN9FNglJkDjDzczWAstFg"
           allowfullscreen>
         </iframe>
-        <h3>Almohadas Bamboo</h3>
+
+        <h3>
+          Sábanas estilo egipcio
+        </h3>
+
       </div>
+
+
+      <div class="video">
+
+        <iframe
+          src="https://www.youtube.com/embed?listType=playlist&list=OLAK5uy_nxMGel4h69LPxN9FNglJkDjDzczWAstFg"
+          allowfullscreen>
+        </iframe>
+
+        <h3>
+          Almohadas Bamboo
+        </h3>
+
+      </div>
+
 
     </div>
+
   </section>
 
-  <section class="pass" id="pass">
-    <h2>INOVATION PASS</h2>
+
+  <!-- =========================
+       INOVATION PASS
+  ========================== -->
+
+  <section
+    class="pass"
+    id="pass"
+  >
+
+    <h2>
+      INOVATION PASS
+    </h2>
+
     <p>
       Forma parte de nuestra comunidad y recibe beneficios,
       promociones y ofertas especiales.
     </p>
+
     <br>
-    <a href="#" class="boton">CONOCER INOVATION PASS</a>
+
+    <a href="#" class="boton">
+      CONOCER INOVATION PASS
+    </a>
+
   </section>
+
+
+  <!-- =========================
+       NEWSLETTER
+  ========================== -->
 
   <section class="newsletter">
-    <h2>Recibe nuestras promociones</h2>
-    <p>Suscríbete y sé de los primeros en conocer nuestras novedades.</p>
 
-    <input type="email" placeholder="Tu correo electrónico">
-    <a href="#" class="boton">SUSCRIBIRME</a>
+    <h2>
+      Recibe nuestras promociones
+    </h2>
+
+    <p>
+      Suscríbete y sé de los primeros en conocer nuestras novedades.
+    </p>
+
+    <input
+      type="email"
+      placeholder="Tu correo electrónico"
+    >
+
+    <a href="#" class="boton">
+      SUSCRIBIRME
+    </a>
+
   </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
 
   <footer id="contacto">
 
     <div class="footer-grid">
 
+
       <div>
-        <h3>INOVATION STORE</h3>
+
+        <h3>
+          INOVATION STORE
+        </h3>
+
         <p>
           Calidad, confort y elegancia para transformar
           tu espacio de descanso.
         </p>
+
       </div>
 
-      <div>
-        <h3>TIENDA</h3>
-        <a href="#">Edredones</a>
-        <a href="#">Sábanas</a>
-        <a href="#">Almohadas</a>
-        <a href="#">Protectores</a>
-        <a href="#">Cortinas</a>
-      </div>
 
       <div>
-        <h3>AYUDA</h3>
-        <a href="#">Envíos</a>
-        <a href="#">Cambios y devoluciones</a>
-        <a href="#">Rastrea tu pedido</a>
-        <a href="#">Preguntas frecuentes</a>
+
+        <h3>
+          TIENDA
+        </h3>
+
+        <a href="#">
+          Edredones
+        </a>
+
+        <a href="#">
+          Sábanas
+        </a>
+
+        <a href="#">
+          Almohadas
+        </a>
+
+        <a href="#">
+          Protectores
+        </a>
+
+        <a href="#">
+          Cortinas
+        </a>
+
       </div>
 
+
       <div>
-        <h3>CONTACTO</h3>
-        <p>WhatsApp</p>
-        <p>contacto@inovationstore.com</p>
-        <p>Ciudad de México</p>
+
+        <h3>
+          AYUDA
+        </h3>
+
+        <a href="#">
+          Envíos
+        </a>
+
+        <a href="#">
+          Cambios y devoluciones
+        </a>
+
+        <a href="#">
+          Rastrea tu pedido
+        </a>
+
+        <a href="#">
+          Preguntas frecuentes
+        </a>
+
       </div>
+
+
+      <div>
+
+        <h3>
+          CONTACTO
+        </h3>
+
+        <p>
+          WhatsApp
+        </p>
+
+        <p>
+          contacto@inovationstore.com
+        </p>
+
+        <p>
+          Ciudad de México
+        </p>
+
+      </div>
+
 
     </div>
 
+
     <div class="copyright">
-      © 2026 Inovation Store. Todos los derechos reservados.
+
+      © 2026 Inovation Store.
+      Todos los derechos reservados.
+
     </div>
 
   </footer>
-<script>
-/* MENÚ: ocultar al bajar y mostrar al subir */
 
-let ultimaPosicionMenu = window.scrollY;
 
-window.addEventListener("scroll", function () {
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
 
-  const menuPrincipal = document.querySelector("nav");
+  <script>
 
-  if (!menuPrincipal) return;
+    document.addEventListener("DOMContentLoaded", function () {
 
-  const posicionActualMenu = window.scrollY;
+      const nav = document.querySelector("nav");
+      const volverInicio = document.getElementById("volver-inicio");
+      const enlacesMenu = document.querySelectorAll(".menu a");
+      const logoInicio = document.getElementById("logo-inicio");
 
-  if (posicionActualMenu <= 20) {
+      /*
+        MOSTRAR INICIO
+      */
 
-    menuPrincipal.classList.remove("menu-oculto");
+      function mostrarInicio() {
 
-  } else if (posicionActualMenu > ultimaPosicionMenu) {
+        nav.style.display = "flex";
 
-    // Bajando
-    menuPrincipal.classList.add("menu-oculto");
+        volverInicio.style.display = "none";
 
-  } else {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
 
-    // Subiendo
-    menuPrincipal.classList.remove("menu-oculto");
+        history.replaceState(
+          null,
+          "",
+          window.location.pathname + window.location.search
+        );
+      }
 
-  }
 
-  ultimaPosicionMenu = posicionActualMenu;
-});
-</script>
+      /*
+        MOSTRAR SECCIÓN
+      */
+
+      function irASeccion(destino) {
+
+        const seccion = document.querySelector(destino);
+
+        if (!seccion) return;
+
+        seccion.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+        /*
+          Esperamos a que termine el desplazamiento
+          antes de esconder el menú.
+        */
+
+        setTimeout(function () {
+
+          nav.style.display = "none";
+
+          volverInicio.style.display = "block";
+
+        }, 700);
+
+      }
+
+
+      /*
+        CLIC EN EL MENÚ
+      */
+
+      enlacesMenu.forEach(function (enlace) {
+
+        enlace.addEventListener("click", function (e) {
+
+          e.preventDefault();
+
+          const destino = enlace.getAttribute("href");
+
+          /*
+            INICIO
+          */
+
+          if (
+            destino === "#" ||
+            enlace.dataset.seccion === "inicio"
+          ) {
+
+            mostrarInicio();
+
+            return;
+          }
+
+
+          /*
+            OTRA SECCIÓN
+          */
+
+          irASeccion(destino);
+
+        });
+
+      });
+
+
+      /*
+        LOGO = INICIO
+      */
+
+      logoInicio.addEventListener("click", function (e) {
+
+        e.preventDefault();
+
+        mostrarInicio();
+
+      });
+
+
+      /*
+        BOTÓN ← INICIO
+      */
+
+      volverInicio.addEventListener("click", function (e) {
+
+        e.preventDefault();
+
+        mostrarInicio();
+
+      });
+
+
+      /*
+        AL ABRIR LA PÁGINA:
+        SIEMPRE COMENZAR EN INICIO
+      */
+
+      nav.style.display = "flex";
+
+      volverInicio.style.display = "none";
+
+      window.scrollTo(0, 0);
+
+    });
+
+  </script>
 
 </body>
 </html>
